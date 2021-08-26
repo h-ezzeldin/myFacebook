@@ -36,9 +36,9 @@ class PostViewModel : ViewModel() {
         postInterface = retrofit.create(PostInterface::class.java)
     }
 
-    fun getPosts(){
+    fun getPosts(userId: String){
 
-        val observable: Single<MutableList<PostModel>> = postInterface.getPosts()
+        val observable: Single<MutableList<PostModel>> = postInterface.getPosts(userId)
             .subscribeOn(io())
             .observeOn(AndroidSchedulers.mainThread())
         var singleObserver: SingleObserver<MutableList<PostModel>> = object: SingleObserver<MutableList<PostModel>> {
